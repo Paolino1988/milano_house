@@ -1,0 +1,9 @@
+pandas
+dash
+numpy
+dash_bootstrap_components
+matplotlib
+glob
+os
+csv
+re
