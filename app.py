@@ -80,7 +80,7 @@ row6 = html.Div(
 @app.callback(
     Output('graph1', 'figure'),
     Input('dropdown1', 'value'))
-def update_figure(drop):
+def update_figure1(drop):
     fig = go.Figure()
     for m in df[df['Zone']==drop].State.unique():
         fig.add_trace(go.Box(y=df.loc[(df['Zone']==drop)&(df['State']==m),'PrSqMtr'].values, name=m))
@@ -118,7 +118,7 @@ def update_figure(drop):
 @app.callback(
     Output('graph2', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
-def update_figure(drop1,drop2):
+def update_figure2(drop1,drop2):
     fig = go.Figure()
     if len(drop1)>5:
         drop1=drop1[:5]
@@ -159,7 +159,7 @@ def update_figure(drop1,drop2):
 @app.callback(
     Output('graph3', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
-def update_figure(drop1,drop2):  
+def update_figure3(drop1,drop2):  
     m=20
     df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
     fig = go.Figure()
@@ -197,7 +197,7 @@ def update_figure(drop1,drop2):
 @app.callback(
     Output('graph4', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
-def update_figure(drop1,drop2):  
+def update_figure4(drop1,drop2):  
     
     fig = go.Figure()
     df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
