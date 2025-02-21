@@ -29,6 +29,7 @@ for file in res:
 df.drop_duplicates(inplace=True)
 
 from dash import Dash, dash_table, dcc, html
+from dash import html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
