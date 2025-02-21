@@ -1,6 +1,6 @@
 pandas
 dash
 flask
-dash_bootstrap_components
+dash-bootstrap-components
 matplotlib
 gunicorn
