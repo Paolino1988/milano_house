@@ -4,6 +4,3 @@ flask
 dash_bootstrap_components
 matplotlib
 gunicorn
-os
-csv
-re
