@@ -34,6 +34,7 @@ import dash_bootstrap_components as dbc
 
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server 
 app.title = "Parametri delle case in vendita su Milano nell\' anno 2024"
 
 row1 = html.Div(
