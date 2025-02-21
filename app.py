@@ -34,8 +34,8 @@ import dash_bootstrap_components as dbc
 
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server 
 app.title = "Parametri delle case in vendita su Milano nell\' anno 2024"
+server = app.server 
 
 row1 = html.Div(
     [dbc.Row([
@@ -256,4 +256,4 @@ app.layout = dbc.Container(children=[
 
     
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
