@@ -15,17 +15,17 @@ import re
 res = []
 dir_path = r'files'
 for path in os.listdir(dir_path):
-	if os.path.isfile(os.path.join(dir_path, path)):
-        	res.append(path)
+    if os.path.isfile(os.path.join(dir_path, path)):
+        res.append(path)
 
 
 df = pd.DataFrame([])
 if res:
-	for file in res:
-		df = pd.concat((df,pd.read_csv('files/{}'.format(file))),axis=0)
-		df.drop_duplicates(inplace=True)
+    for file in res:
+        df = pd.concat((df,pd.read_csv('files/{}'.format(file))),axis=0)
+	df.drop_duplicates(inplace=True)
 else:
-	df = pd.DataFrame({'Zone':['Corvetto','Rogoredo'],'Status':['Good','Good'],'PrSqMtr':[40,60],'SqMeter':[2000,1600]})
+    df = pd.DataFrame({'Zone':['Corvetto','Rogoredo'],'Status':['Good','Good'],'PrSqMtr':[40,60],'SqMeter':[2000,1600]})
 
 
 
@@ -83,36 +83,36 @@ row6 = html.Div(
     Output('graph1', 'figure'),
     Input('dropdown1', 'value'))
 def update_figure1(drop):
-	fig = go.Figure()
-    	for m in df[df['Zone']==drop].State.unique():
-        	fig.add_trace(go.Box(y=df.loc[(df['Zone']==drop)&(df['State']==m),'PrSqMtr'].values, name=m))
+    fig = go.Figure()
+    for m in df[df['Zone']==drop].State.unique():
+        fig.add_trace(go.Box(y=df.loc[(df['Zone']==drop)&(df['State']==m),'PrSqMtr'].values, name=m))
 
-	fig.update_layout(
-	        title=dict(
-	            text="BoxPlot Price by Mq - Zone = {}".format(drop)
-	        ),
-	        xaxis=dict(
-	            title=dict(
-	                text="Status"
-	            )
-	        ),
-	        yaxis=dict(
-	            title=dict(
-	                text="PrMq"
-	            )
-	        ),
-	        legend=dict(
-	            title=dict(
-	                text="Legend Title"
-	            )
-	        ),
-	        font=dict(
-	            family="Courier New, monospace",
-	            size=14,
-	            color="RebeccaPurple"
-	        )
+    fig.update_layout(
+	title=dict(
+	    text="BoxPlot Price by Mq - Zone = {}".format(drop)
+	),
+	xaxis=dict(
+	    title=dict(
+		text="Status"
 	    )
-	return fig
+	),
+	yaxis=dict(
+	    title=dict(
+		text="PrMq"
+	    )
+	),
+	legend=dict(
+	    title=dict(
+		text="Legend Title"
+	    )
+	),
+	font=dict(
+	    family="Courier New, monospace",
+	    size=14,
+	    color="RebeccaPurple"
+	)
+    )
+    return fig
 
 
 
@@ -121,14 +121,14 @@ def update_figure1(drop):
     Output('graph2', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
 def update_figure2(drop1,drop2):
-	fig = go.Figure()
-    	if len(drop1)>5:
-        	drop1=drop1[:5]
+    fig = go.Figure()
+    if len(drop1)>5:
+        drop1=drop1[:5]
         
-	for m in drop1:
-        	fig.add_trace(go.Box(y=df.loc[(df['Zone']==m)&(df['State']==drop2),'PrSqMtr'].values, name=m))
+    for m in drop1:
+        fig.add_trace(go.Box(y=df.loc[(df['Zone']==m)&(df['State']==drop2),'PrSqMtr'].values, name=m))
 
-    	fig.update_layout(
+    fig.update_layout(
 	        title=dict(
 	            text="BoxPlot Price by Mq - State = {}".format(drop2)
 	        ),
@@ -153,7 +153,7 @@ def update_figure2(drop1,drop2):
 	            color="RebeccaPurple"
 	        )
 	    )
-	return fig
+    return fig
 
 
 
@@ -162,13 +162,13 @@ def update_figure2(drop1,drop2):
     Output('graph3', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
 def update_figure3(drop1,drop2):  
-	m=20
-    	df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
-    	fig = go.Figure()
-    	for k in range(0,210,10):
-        	fig.add_trace(go.Box(y=df1.loc[(df1['SqMeter']>m+k)&(df1['SqMeter']<m+k+10),'PrSqMtr'].values, name='{}-{}'.format(m+k,m+k+10)))
+    m=20
+    df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
+    fig = go.Figure()
+    for k in range(0,210,10):
+        fig.add_trace(go.Box(y=df1.loc[(df1['SqMeter']>m+k)&(df1['SqMeter']<m+k+10),'PrSqMtr'].values, name='{}-{}'.format(m+k,m+k+10)))
 
-    	fig.update_layout(
+    fig.update_layout(
 	        title=dict(
 	            text="BoxPlot Price by Mq dependent on Zone {} and State {}".format(drop1,drop2)
 	        ),
@@ -193,22 +193,22 @@ def update_figure3(drop1,drop2):
 	            color="RebeccaPurple"
 	        )
 	    )
-	return fig
+    return fig
 
 
 @app.callback(
     Output('graph4', 'figure'),
     [Input('dropdown2', 'value'), Input('dropdown3', 'value')])
 def update_figure4(drop1,drop2):  
-	fig = go.Figure()
-    	df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
-    	fig = go.Figure(data=[go.Histogram(x=df1.loc[df1['SqMeter']<250,'SqMeter'].values,
+    fig = go.Figure()
+    df1 = df[(df['Zone'].isin(drop1))&(df['State']==drop2)]
+    fig = go.Figure(data=[go.Histogram(x=df1.loc[df1['SqMeter']<250,'SqMeter'].values,
         	xbins=dict(
 	            start=20,
 	            end=250,
 	            size=10
 	        ))])
-	fig.update_layout(
+    fig.update_layout(
 	        title=dict(
 	            text="Histogram Number of House by Mq on Zone {} and State {}".format(drop1,drop2)
 	        ),
@@ -233,7 +233,7 @@ def update_figure4(drop1,drop2):
 	            color="RebeccaPurple"
 	        )
 	    )
-	return fig
+    return fig
 
 
 
