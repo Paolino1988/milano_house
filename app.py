@@ -2,7 +2,6 @@ import pandas as pd
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', 70)
 from collections import defaultdict
-import matplotlib.pyplot as plt
 from os import listdir
 import plotly.graph_objects as go 
 import glob
