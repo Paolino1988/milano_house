@@ -23,7 +23,7 @@ df = pd.DataFrame([])
 if res:
     for file in res:
         df = pd.concat((df,pd.read_csv('files/{}'.format(file))),axis=0)
-	df.drop_duplicates(inplace=True)
+    df.drop_duplicates(inplace=True)
 else:
     df = pd.DataFrame({'Zone':['Corvetto','Rogoredo'],'State':['Good','Good'],'PrSqMtr':[40,60],'SqMeter':[2000,1600]})
 
