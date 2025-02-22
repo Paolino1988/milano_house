@@ -1,6 +1,3 @@
 pandas
-dash
-flask
-dash-bootstrap-components
-matplotlib
-gunicorn
+dash==2.14.1
+gunicorn==21.2.0
