@@ -48,7 +48,7 @@ row1 = html.Div(
         ], align="center")])
 
 row2 = html.Div(
-    [dbc.Row([dcc.Graph(id='graph1', style={'width': '1500px','height':'800px'})])])
+    [dbc.Row([dcc.Graph(id='graph1', style={'width': '1300px','height':'400px'})])])
         
     
 row3 = html.Div(
@@ -65,15 +65,15 @@ row3 = html.Div(
 
 
 row4 = html.Div(
-    [dbc.Row([dcc.Graph(id='graph2', style={'width': '1800px','height':'600px'})])])
+    [dbc.Row([dcc.Graph(id='graph2', style={'width': '1400px','height':'400px'})])])
 
 
 row5 = html.Div(
-    [dbc.Row([dcc.Graph(id='graph3', style={'width': '1800px','height':'600px'})])])     
+    [dbc.Row([dcc.Graph(id='graph3', style={'width': '1400px','height':'400px'})])])     
 
 
 row6 = html.Div(
-    [dbc.Row([dcc.Graph(id='graph4', style={'width': '1800px','height':'600px'})])])    
+    [dbc.Row([dcc.Graph(id='graph4', style={'width': '1400px','height':'400px'})])])    
 
 
 
